@@ -153,9 +153,7 @@ def parse_czech_wikipedia_mens_schedule(html: str, cfg: TournamentConfig) -> Lis
     current_date: Optional[datetime] = None
     skip_tokens = {"[", "]", "|", "editovat", "editovat zdroj", ","}
     group_b_indices = [idx for idx, line in enumerate(lines) if line == "Skupina B – Fribourg"]
-    log(f"DEBUG group_b_indices: {group_b_indices}")
     if not group_b_indices:
-        log(f"DEBUG headings found: {[l for l in lines if 'kupina' in l or 'pasy' in l or 'Play' in l][:20]}")
         return games
 
     start_index = group_b_indices[-1]
@@ -205,76 +203,57 @@ def parse_czech_wikipedia_mens_schedule(html: str, cfg: TournamentConfig) -> Lis
             i += 1
             continue
 
-        def next_value(start_index: int) -> Tuple[Optional[str], int]:
-            idx = start_index
-            while idx < len(lines):
-                token = lines[idx]
-                if token in skip_tokens or token == "* * *":
-                    idx += 1
-                    continue
-                # skip period score lines like "(2:0, 0:0, 2:1)"
-                if re.match(r"^\(\d", token):
-                    idx += 1
-                    continue
-                return token, idx
-            return None, idx
-
         time_str = line
-        log(f"DEBUG time found: {repr(line)} (date={current_date}), next 6 lines: {[repr(x) for x in lines[i+1:i+7]]}")
-        team1, idx1 = next_value(i + 1)
-        if not team1:
-            i += 1
-            continue
-
-        next_token, idx2 = next_value(idx1 + 1)
-
-        score1 = score2 = None
-        status_suffix = None
-
-        # score pattern: digits, optional spaces, any separator (:, -, –), optional spaces, digits
         score_re = re.compile(r"^(\d+)\s*[:\-–]\s*(\d+)\s*(.*)?$")
+        date_re = re.compile(r"\d{1,2}\.\s+[A-Za-zÁ-ž]+\s+20\d{2}")
 
-        if not next_token:
+        # Window scan: find teams and score in any order within the next 12 lines.
+        # The HTML template changes after a game is played (score/venue may appear
+        # before team names), so strict sequential parsing is not reliable.
+        found_teams: List[str] = []
+        score1: Optional[int] = None
+        score2: Optional[int] = None
+        status_suffix: Optional[str] = None
+        venue_line: Optional[str] = None
+
+        for j in range(i + 1, min(i + 13, len(lines))):
+            w = lines[j]
+            if not w or w in skip_tokens or w == "* * *":
+                continue
+            if re.match(r"^\(\d", w):
+                continue
+            if re.fullmatch(r"\d{1,2}:\d{2}", w):
+                continue
+            if date_re.search(w):
+                continue
+            team_code = normalize_team_name(w)
+            if team_code != "TBD":
+                if team_code not in found_teams:
+                    found_teams.append(team_code)
+                continue
+            if score1 is None:
+                sm = score_re.match(w)
+                if sm:
+                    score1 = int(sm.group(1))
+                    score2 = int(sm.group(2))
+                    suffix = (sm.group(3) or "").strip().lower()
+                    if "pp" in suffix or "ot" in suffix:
+                        status_suffix = "OT"
+                    elif "so" in suffix or "sn" in suffix:
+                        status_suffix = "SO"
+                    else:
+                        status_suffix = "FT"
+                    continue
+            if venue_line is None and len(w) > 5:
+                skip_venue = {"Návštěvnost", "Report", "Brankář", "Rozhodčí", "Čároví", "Střely", "Tresty"}
+                if not any(s in w for s in skip_venue):
+                    venue_line = w
+
+        if len(found_teams) < 2:
             i += 1
             continue
-        elif re.fullmatch(r"\d{1,2}:\d{2}", next_token):
-            # scheduled end time (e.g. "23:20") — game not yet played
-            team2, idx3 = next_value(idx2 + 1)
-        elif score_re.match(next_token):
-            # score between teams (e.g. "3:2", "3 : 2", "3–2") — game already played
-            sm = score_re.match(next_token)
-            score1 = int(sm.group(1))
-            score2 = int(sm.group(2))
-            suffix = (sm.group(3) or "").strip().lower()
-            if "pp" in suffix or "ot" in suffix:
-                status_suffix = "OT"
-            elif "so" in suffix or "sn" in suffix:
-                status_suffix = "SO"
-            else:
-                status_suffix = "FT"
-            team2, idx3 = next_value(idx2 + 1)
-        elif normalize_team_name(next_token) != "TBD":
-            # next_token is directly team2 (score line absent after game)
-            team2 = next_token
-            idx3 = idx2
-        else:
-            i += 1
-            continue
 
-        venue_name, idx4 = next_value(idx3 + 1 if team2 is not None else idx2 + 1)
-        city, idx5 = next_value(idx4 + 1 if venue_name is not None else idx3 + 1)
-
-        if not (team1 and team2 and venue_name and city):
-            i += 1
-            continue
-
-        team1_code = normalize_team_name(team1)
-        team2_code = normalize_team_name(team2)
-        if "TBD" in {team1_code, team2_code}:
-            i += 1
-            continue
-
-        venue = f"{venue_name}, {city}"
+        team1_code, team2_code = found_teams[0], found_teams[1]
         start = TZ.localize(
             datetime(current_date.year, current_date.month, current_date.day, int(time_str[:2]), int(time_str[3:]))
         )
@@ -290,13 +269,13 @@ def parse_czech_wikipedia_mens_schedule(html: str, cfg: TournamentConfig) -> Lis
                 phase_key="preliminary",
                 phase_label=PHASE_CZ["preliminary"],
                 group_label="Skupina B",
-                venue=venue,
+                venue=venue_line,
                 score1=score1,
                 score2=score2,
                 status_suffix=status_suffix,
             )
         )
-        i = idx5 + 1
+        i += 1
 
     return games
 
