@@ -4,13 +4,6 @@ PRODID:-//czech-hockey-calendars//CZ
 X-WR-CALNAME:IIHF MS 2026 - Česko a play-off
 X-WR-TIMEZONE:Europe/Prague
 BEGIN:VEVENT
-SUMMARY:👨 🇩🇰 Dánsko - 🇨🇿 Česko
-DTSTART;TZID=Europe/Prague:20260515T202000
-DTEND;TZID=Europe/Prague:20260515T232000
-UID:b7d98c3350a8512b34bbbc1160a8748b61b68eab@iihf-calendar
-DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg
-END:VEVENT
-BEGIN:VEVENT
 SUMMARY:👨 🇸🇮 Slovinsko - 🇨🇿 Česko
 DTSTART;TZID=Europe/Prague:20260516T202000
 DTEND;TZID=Europe/Prague:20260516T232000
