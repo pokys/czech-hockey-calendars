@@ -215,15 +215,39 @@ def parse_czech_wikipedia_mens_schedule(html: str, cfg: TournamentConfig) -> Lis
 
         time_str = line
         team1, idx1 = next_value(i + 1)
-        time2, idx2 = next_value(idx1 + 1 if team1 is not None else i + 1)
-        team2, idx3 = next_value(idx2 + 1 if time2 is not None else idx1 + 1)
+        next_token, idx2 = next_value(idx1 + 1 if team1 is not None else i + 1)
+
+        if not (team1 and next_token):
+            i += 1
+            continue
+
+        score1 = score2 = None
+        status_suffix = None
+
+        if re.fullmatch(r"\d{1,2}:\d{2}", next_token):
+            # next_token is the scheduled end time (e.g. "23:20") — game not yet played
+            team2, idx3 = next_value(idx2 + 1)
+        else:
+            # next_token may be a score like "3:2" or "3:2 pp" shown after the game was played
+            score_m = re.match(r"^(\d+):(\d+)\s*(.*)?$", next_token)
+            if not score_m:
+                i += 1
+                continue
+            score1 = int(score_m.group(1))
+            score2 = int(score_m.group(2))
+            suffix = (score_m.group(3) or "").strip().lower()
+            if "pp" in suffix or "ot" in suffix:
+                status_suffix = "OT"
+            elif "so" in suffix or "sn" in suffix:
+                status_suffix = "SO"
+            else:
+                status_suffix = "FT"
+            team2, idx3 = next_value(idx2 + 1)
+
         venue_name, idx4 = next_value(idx3 + 1 if team2 is not None else idx2 + 1)
         city, idx5 = next_value(idx4 + 1 if venue_name is not None else idx3 + 1)
 
-        if not (team1 and time2 and team2 and venue_name and city):
-            i += 1
-            continue
-        if not re.fullmatch(r"\d{1,2}:\d{2}", time2):
+        if not (team1 and team2 and venue_name and city):
             i += 1
             continue
 
@@ -250,6 +274,9 @@ def parse_czech_wikipedia_mens_schedule(html: str, cfg: TournamentConfig) -> Lis
                 phase_label=PHASE_CZ["preliminary"],
                 group_label="Skupina B",
                 venue=venue,
+                score1=score1,
+                score2=score2,
+                status_suffix=status_suffix,
             )
         )
         i = idx5 + 1
