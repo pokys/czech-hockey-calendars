@@ -153,7 +153,9 @@ def parse_czech_wikipedia_mens_schedule(html: str, cfg: TournamentConfig) -> Lis
     current_date: Optional[datetime] = None
     skip_tokens = {"[", "]", "|", "editovat", "editovat zdroj", ","}
     group_b_indices = [idx for idx, line in enumerate(lines) if line == "Skupina B – Fribourg"]
+    log(f"DEBUG group_b_indices: {group_b_indices}")
     if not group_b_indices:
+        log(f"DEBUG headings found: {[l for l in lines if 'kupina' in l or 'pasy' in l or 'Play' in l][:20]}")
         return games
 
     start_index = group_b_indices[-1]
@@ -218,6 +220,7 @@ def parse_czech_wikipedia_mens_schedule(html: str, cfg: TournamentConfig) -> Lis
             return None, idx
 
         time_str = line
+        log(f"DEBUG time found: {repr(line)} (date={current_date}), next 6 lines: {[repr(x) for x in lines[i+1:i+7]]}")
         team1, idx1 = next_value(i + 1)
         if not team1:
             i += 1
