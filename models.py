@@ -12,6 +12,7 @@ class CalendarSpec:
     include_team_cze: bool = True
     include_playoff: bool = True
     include_all_games: bool = False
+    include_final: bool = False
 
 
 @dataclass(frozen=True)
