@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '0 6 * * *'  # fallback daily refresh
   workflow_dispatch:
 permissions:
   contents: write
@@ -30,14 +30,17 @@ jobs:
       - name: Generate calendars
         run: python generate.py
 
+      - name: Update cron schedule
+        run: python update_schedule.py
+
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dist || true
+          git add dist .github/workflows/build.yml || true
           if git diff --cached --quiet; then
-            echo "No calendar changes"
+            echo "No changes"
           else
-            git commit -m "Update calendars"
+            git commit -m "Update calendars and schedule"
             git push
           fi
