@@ -210,32 +210,39 @@ def parse_czech_wikipedia_mens_schedule(html: str, cfg: TournamentConfig) -> Lis
                 if token in skip_tokens or token == "* * *":
                     idx += 1
                     continue
+                # skip period score lines like "(2:0, 0:0, 2:1)"
+                if re.match(r"^\(\d", token):
+                    idx += 1
+                    continue
                 return token, idx
             return None, idx
 
         time_str = line
         team1, idx1 = next_value(i + 1)
-        next_token, idx2 = next_value(idx1 + 1 if team1 is not None else i + 1)
-
-        if not (team1 and next_token):
+        if not team1:
             i += 1
             continue
+
+        next_token, idx2 = next_value(idx1 + 1)
 
         score1 = score2 = None
         status_suffix = None
 
-        if re.fullmatch(r"\d{1,2}:\d{2}", next_token):
-            # next_token is the scheduled end time (e.g. "23:20") — game not yet played
+        # score pattern: digits, optional spaces, any separator (:, -, –), optional spaces, digits
+        score_re = re.compile(r"^(\d+)\s*[:\-–]\s*(\d+)\s*(.*)?$")
+
+        if not next_token:
+            i += 1
+            continue
+        elif re.fullmatch(r"\d{1,2}:\d{2}", next_token):
+            # scheduled end time (e.g. "23:20") — game not yet played
             team2, idx3 = next_value(idx2 + 1)
-        else:
-            # next_token may be a score like "3:2" or "3:2 pp" shown after the game was played
-            score_m = re.match(r"^(\d+):(\d+)\s*(.*)?$", next_token)
-            if not score_m:
-                i += 1
-                continue
-            score1 = int(score_m.group(1))
-            score2 = int(score_m.group(2))
-            suffix = (score_m.group(3) or "").strip().lower()
+        elif score_re.match(next_token):
+            # score between teams (e.g. "3:2", "3 : 2", "3–2") — game already played
+            sm = score_re.match(next_token)
+            score1 = int(sm.group(1))
+            score2 = int(sm.group(2))
+            suffix = (sm.group(3) or "").strip().lower()
             if "pp" in suffix or "ot" in suffix:
                 status_suffix = "OT"
             elif "so" in suffix or "sn" in suffix:
@@ -243,6 +250,13 @@ def parse_czech_wikipedia_mens_schedule(html: str, cfg: TournamentConfig) -> Lis
             else:
                 status_suffix = "FT"
             team2, idx3 = next_value(idx2 + 1)
+        elif normalize_team_name(next_token) != "TBD":
+            # next_token is directly team2 (score line absent after game)
+            team2 = next_token
+            idx3 = idx2
+        else:
+            i += 1
+            continue
 
         venue_name, idx4 = next_value(idx3 + 1 if team2 is not None else idx2 + 1)
         city, idx5 = next_value(idx4 + 1 if venue_name is not None else idx3 + 1)
