@@ -148,7 +148,7 @@ def parse_czech_wikipedia_mens_schedule(html: str, cfg: TournamentConfig) -> Lis
     for tag in soup(["script", "style"]):
         tag.decompose()
 
-    lines = [re.sub(r"\s+", " ", line.strip()) for line in soup.get_text("\n").splitlines() if line.strip()]
+    lines = [re.sub(r"\s+", " ", line.replace("\xa0", " ").strip()) for line in soup.get_text("\n").splitlines() if line.strip()]
     games: List[Game] = []
     current_date: Optional[datetime] = None
     seen_times: set = set()
