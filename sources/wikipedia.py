@@ -157,9 +157,23 @@ def parse_czech_wikipedia_mens_schedule(html: str, cfg: TournamentConfig) -> Lis
     if not group_b_indices:
         return games
 
+    PLAYOFF_PHASE_MAP = {
+        "Čtvrtfinále": "quarterfinals",
+        "Semifinále": "semifinals",
+        "O bronz": "bronze",
+        "O 3. místo": "bronze",
+        "Finále": "gold",
+    }
+
+    score_re = re.compile(r"^(\d+)\s*[:\-–]\s*(\d+)\s*(.*)?$")
+    date_re = re.compile(r"\d{1,2}\.\s+[A-Za-zÁ-ž]+\s+20\d{2}")
+
     start_index = group_b_indices[-1]
     in_group_b = False
+    in_playoff = False
     in_matches = False
+    current_phase_key = "preliminary"
+    current_group_label: Optional[str] = None
 
     i = start_index
     while i < len(lines):
@@ -167,25 +181,49 @@ def parse_czech_wikipedia_mens_schedule(html: str, cfg: TournamentConfig) -> Lis
 
         if line == "Skupina B – Fribourg":
             in_group_b = True
+            in_playoff = False
             in_matches = False
+            current_phase_key = "preliminary"
+            current_group_label = "Skupina B"
             i += 1
             continue
-        if not in_group_b:
+
+        if not (in_group_b or in_playoff):
             i += 1
             continue
+
         if line == "Play-off":
-            break
-        if line == "Tabulka":
-            in_matches = False
-            i += 1
-            continue
-        if line == "Zápasy":
+            in_group_b = False
+            in_playoff = True
             in_matches = True
+            current_date = None
             i += 1
             continue
-        if not in_matches:
-            i += 1
-            continue
+
+        if in_playoff:
+            matched = False
+            for label, phase_key in PLAYOFF_PHASE_MAP.items():
+                if line == label:
+                    current_phase_key = phase_key
+                    current_group_label = None
+                    matched = True
+                    break
+            if matched:
+                i += 1
+                continue
+
+        if in_group_b:
+            if line == "Tabulka":
+                in_matches = False
+                i += 1
+                continue
+            if line == "Zápasy":
+                in_matches = True
+                i += 1
+                continue
+            if not in_matches:
+                i += 1
+                continue
 
         date_match = re.fullmatch(r"(\d{1,2}\.\s+[A-Za-zÁ-ž]+\s+20\d{2})", line)
         if date_match:
@@ -213,8 +251,6 @@ def parse_czech_wikipedia_mens_schedule(html: str, cfg: TournamentConfig) -> Lis
         seen_times.add(time_key)
 
         time_str = line
-        score_re = re.compile(r"^(\d+)\s*[:\-–]\s*(\d+)\s*(.*)?$")
-        date_re = re.compile(r"\d{1,2}\.\s+[A-Za-zÁ-ž]+\s+20\d{2}")
 
         # Window scan: find teams and score in any order within the next 12 lines.
         # The HTML template changes after a game is played (score/venue may appear
@@ -275,9 +311,9 @@ def parse_czech_wikipedia_mens_schedule(html: str, cfg: TournamentConfig) -> Lis
                 start=start,
                 team1=team1_code,
                 team2=team2_code,
-                phase_key="preliminary",
-                phase_label=PHASE_CZ["preliminary"],
-                group_label="Skupina B",
+                phase_key=current_phase_key,
+                phase_label=PHASE_CZ.get(current_phase_key, "Skupina"),
+                group_label=current_group_label,
                 venue=venue_line,
                 score1=score1,
                 score2=score2,
