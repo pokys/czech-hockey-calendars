@@ -6,7 +6,7 @@ from typing import List, Optional, Tuple
 from bs4 import BeautifulSoup
 from dateutil import parser as dateparser
 
-from constants import PHASE_CZ, TEAM_ALIAS_LOOKUP, TZ
+from constants import PHASE_CZ, TEAM_ALIAS_LOOKUP, TEAM_FLAGS, TZ
 from models import Game, TournamentConfig
 from sources.common import (
     extract_score_and_status,
