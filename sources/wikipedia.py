@@ -151,6 +151,7 @@ def parse_czech_wikipedia_mens_schedule(html: str, cfg: TournamentConfig) -> Lis
     lines = [re.sub(r"\s+", " ", line.strip()) for line in soup.get_text("\n").splitlines() if line.strip()]
     games: List[Game] = []
     current_date: Optional[datetime] = None
+    seen_times: set = set()
     skip_tokens = {"[", "]", "|", "editovat", "editovat zdroj", ","}
     group_b_indices = [idx for idx, line in enumerate(lines) if line == "Skupina B – Fribourg"]
     if not group_b_indices:
@@ -203,6 +204,14 @@ def parse_czech_wikipedia_mens_schedule(html: str, cfg: TournamentConfig) -> Lis
             i += 1
             continue
 
+        # Skip duplicate time lines — unplayed games repeat the start time in the
+        # centre column (score position), which would otherwise generate a phantom game.
+        time_key = (current_date.date(), line)
+        if time_key in seen_times:
+            i += 1
+            continue
+        seen_times.add(time_key)
+
         time_str = line
         score_re = re.compile(r"^(\d+)\s*[:\-–]\s*(\d+)\s*(.*)?$")
         date_re = re.compile(r"\d{1,2}\.\s+[A-Za-zÁ-ž]+\s+20\d{2}")
@@ -227,7 +236,7 @@ def parse_czech_wikipedia_mens_schedule(html: str, cfg: TournamentConfig) -> Lis
             if date_re.search(w):
                 continue
             team_code = normalize_team_name(w)
-            if team_code != "TBD":
+            if team_code != "TBD" and team_code in TEAM_FLAGS:
                 if team_code not in found_teams:
                     found_teams.append(team_code)
                 continue
