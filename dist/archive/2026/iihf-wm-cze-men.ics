@@ -18,10 +18,10 @@ UID:5d9a2ee3b02e03a548b1f208b9c79a00bfc2c294@iihf-calendar
 DESCRIPTION:Skupina\nSkupina B\nBCF Arena
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:👨 🇨🇿 Česko - 🇸🇪 Švédsko
+SUMMARY:👨 🇸🇪 Švédsko - 🇨🇿 Česko
 DTSTART;TZID=Europe/Prague:20260518T202000
 DTEND;TZID=Europe/Prague:20260518T232000
-UID:a32889498d6f6130ed6785023ab323513debaeef@iihf-calendar
+UID:d163eecb4560a0de5297f9e757f94ca207e89dcc@iihf-calendar
 DESCRIPTION:Skupina\nSkupina B\nBCF Arena
 END:VEVENT
 BEGIN:VEVENT
