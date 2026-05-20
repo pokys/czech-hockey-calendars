@@ -61,6 +61,8 @@ def build_description(game: Game) -> str:
         parts.append(game.group_label)
     if game.venue:
         parts.append(game.venue)
+    if game.tretiny:
+        parts.append(game.tretiny)
     if game.gamecenter:
         parts.append(game.gamecenter)
     return "\n".join(parts)

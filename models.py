@@ -37,6 +37,7 @@ class Game:
     group_label: Optional[str]
     venue: Optional[str]
     gamecenter: Optional[str] = None
+    tretiny: Optional[str] = None
     score1: Optional[int] = None
     score2: Optional[int] = None
     status_suffix: Optional[str] = None

@@ -175,6 +175,7 @@ def _parse_hokejbox2_block(block: str, cfg: TournamentConfig, phase_key: str, gr
     muz1_raw = params.get("mužstvo1", params.get("muzstvo1", ""))
     muz2_raw = params.get("mužstvo2", params.get("muzstvo2", ""))
     skore_raw = params.get("skóre", params.get("skore", ""))
+    tretiny_raw = params.get("třetiny", params.get("tretiny", ""))
 
     if not datum or not cas:
         return None
@@ -215,6 +216,14 @@ def _parse_hokejbox2_block(block: str, cfg: TournamentConfig, phase_key: str, gr
 
     venue = params.get("stadión", params.get("stadion"))
 
+    tretiny: Optional[str] = None
+    if tretiny_raw:
+        clean_t = re.sub(r"<br\s*/?>", ", ", tretiny_raw)
+        clean_t = re.sub(r"\[\[(?:[^|\]]+\|)?([^\]]+)\]\]", r"\1", clean_t)
+        clean_t = re.sub(r"\{\{[^}]+\}\}", "", clean_t).strip(" ,")
+        if clean_t:
+            tretiny = clean_t
+
     return Game(
         tournament_key=cfg.key,
         tournament_title=cfg.title,
@@ -226,6 +235,8 @@ def _parse_hokejbox2_block(block: str, cfg: TournamentConfig, phase_key: str, gr
         phase_label=PHASE_CZ.get(phase_key, "Skupina"),
         group_label=group_label,
         venue=venue,
+        gamecenter=cfg.wikipedia_url,
+        tretiny=tretiny,
         score1=score1,
         score2=score2,
         status_suffix=status_suffix,
