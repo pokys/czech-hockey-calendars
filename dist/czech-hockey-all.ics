@@ -227,12 +227,13 @@ DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(0:0\, 0:1\, 3:0)\nh
  ttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:👨 🇺🇸 USA - 🇩🇪 Německo
+SUMMARY:👨 🇺🇸 USA - 🇩🇪 Německo 4:3 (SO)
 DTSTART;TZID=Europe/Prague:20260520T202000
 DTEND;TZID=Europe/Prague:20260520T232000
 UID:8e640f6b7402efeaff27834e3c9a4fc048bd718f@iihf-calendar
-DESCRIPTION:Skupina\nSkupina A\nSwiss Life Arena\, Curych\n(1:1\, :\, :)\n
- https://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Skupina\nSkupina A\nSwiss Life Arena\, Curych\n(1:1\, 1:2\, 1:
+ 0 – 0:0 – 1:0)\nhttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_le
+ dním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 🇸🇪 Švédsko - 🇸🇮 Slovinsko 6:0 (FT)
