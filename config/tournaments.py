@@ -18,28 +18,12 @@ TOURNAMENTS = [
                 include_final=True,
             ),
             CalendarSpec(
-                key="cze-plus-playoff",
-                name="IIHF MS 2026 - Česko a play-off",
-                out_file="archive/2026/iihf-wm-cze-men-plus-playoff.ics",
-                include_team_cze=True,
-                include_playoff=True,
-            ),
-        ],
-    ),
-    TournamentConfig(
-        key="iihf-2026-czech-teams",
-        title="IIHF 2026 - Česko",
-        category="combined",
-        wikipedia_url=None,
-        calendars=[
-            CalendarSpec(
-                key="combined-cze-plus-playoff",
-                name="IIHF 2026 - Česko a play-off",
-                out_file="archive/2026/iihf-cze-all.ics",
+                key="all",
+                name="IIHF MS 2026 - Všechny zápasy",
+                out_file="archive/2026/iihf-wm-all.ics",
                 alias_files=["czech-hockey-all.ics"],
-                include_team_cze=True,
-                include_playoff=True,
-            )
+                include_all_games=True,
+            ),
         ],
     ),
 ]

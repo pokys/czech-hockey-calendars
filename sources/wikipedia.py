@@ -297,10 +297,10 @@ def parse_hokejbox2_from_wikitext(cfg: TournamentConfig) -> List[Game]:
         heading = re.match(r"^(={2,4})\s*(.*?)\s*\1\s*$", line)
         if heading:
             text = heading.group(2)
-            if "Skupina B" in text:
+            if "Skupina A" in text or "Skupina B" in text:
                 in_scope = True
                 current_phase = "preliminary"
-                current_group = "Skupina B"
+                current_group = "Skupina A" if "Skupina A" in text else "Skupina B"
             elif text.strip() == "Play-off":
                 in_scope = True
                 current_phase = "quarterfinals"
@@ -310,7 +310,7 @@ def parse_hokejbox2_from_wikitext(cfg: TournamentConfig) -> List[Game]:
                 if matched_phase:
                     current_phase = matched_phase
                     current_group = None
-                elif heading.group(1) == "==" and "Skupina B" not in text:
+                elif heading.group(1) == "==":
                     # Top-level (==) section change exits scope; sub-sections (===, ====) don't
                     in_scope = False
             i += 1

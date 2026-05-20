@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 import os
 import sys
-from typing import Dict, List, Set
+from typing import List, Set
 
 from calendar_builder import assign_playoff_indices, games_to_calendar, select_games
 from config.tournaments import TOURNAMENTS
-from models import Game, TournamentConfig
+from models import Game
 from sources.common import log
 from sources.wikipedia import parse_wikipedia_schedule
 
@@ -76,27 +76,15 @@ def write_tournament_calendars(cfg: TournamentConfig, games: List[Game]) -> None
 
 
 def main() -> int:
-    all_games: Dict[str, List[Game]] = {}
     remove_stale_outputs()
 
     for cfg in TOURNAMENTS:
-        if cfg.category == "combined":
-            continue
         games = load_games(cfg)
         if not games:
             log(f"No games for {cfg.key}, writing fallback empty calendars")
-            all_games[cfg.key] = []
-            write_tournament_calendars(cfg, all_games[cfg.key])
+            write_tournament_calendars(cfg, [])
             continue
-        all_games[cfg.key] = sorted(games, key=lambda game: game.start)
-        write_tournament_calendars(cfg, all_games[cfg.key])
-
-    combined_cfg = next((cfg for cfg in TOURNAMENTS if cfg.category == "combined"), None)
-    if combined_cfg:
-        combined_games: List[Game] = []
-        for games in all_games.values():
-            combined_games.extend(games)
-        write_tournament_calendars(combined_cfg, sorted(combined_games, key=lambda game: game.start))
+        write_tournament_calendars(cfg, sorted(games, key=lambda game: game.start))
 
     return 0
 
