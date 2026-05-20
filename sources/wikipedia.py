@@ -214,7 +214,13 @@ def _parse_hokejbox2_block(block: str, cfg: TournamentConfig, phase_key: str, gr
             else:
                 status_suffix = "FT"
 
-    venue = params.get("stadión", params.get("stadion"))
+    venue_raw = params.get("stadión", params.get("stadion", ""))
+    venue: Optional[str] = None
+    if venue_raw:
+        v = re.sub(r"\[\[(?:[^|\]]+\|)?([^\]]+)\]\]", r"\1", venue_raw)
+        v = re.sub(r"\{\{[^}]+\}\}", "", v).strip()
+        if v:
+            venue = v
 
     tretiny: Optional[str] = None
     if tretiny_raw:
