@@ -5,7 +5,7 @@ from typing import List, Set
 
 from calendar_builder import assign_playoff_indices, games_to_calendar, select_games
 from config.tournaments import TOURNAMENTS
-from models import Game
+from models import Game, TournamentConfig
 from sources.common import log
 from sources.wikipedia import parse_wikipedia_schedule
 
