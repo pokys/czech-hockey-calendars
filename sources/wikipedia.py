@@ -23,6 +23,12 @@ def parse_wikipedia_schedule(cfg: TournamentConfig) -> List[Game]:
     if not cfg.wikipedia_url:
         return []
 
+    if "cs.wikipedia.org" in cfg.wikipedia_url and cfg.category == "men":
+        wt_games = parse_hokejbox2_from_wikitext(cfg)
+        log(f"Hokejbox2 wikitext parser games for {cfg.key}: {len(wt_games)}")
+        if wt_games:
+            return wt_games
+
     html = fetch_url(cfg.wikipedia_url)
     if "cs.wikipedia.org" in cfg.wikipedia_url and cfg.category == "men":
         cz_games = parse_czech_wikipedia_mens_schedule(html, cfg)
@@ -141,6 +147,182 @@ def parse_wikipedia_schedule(cfg: TournamentConfig) -> List[Game]:
     api_games = parse_wikipedia_wikitext(cfg)
     log(f"Wikipedia wikitext parsed games for {cfg.key}: {len(api_games)}")
     return api_games
+
+
+def _extract_team_from_lh(text: str) -> str:
+    """Extract 3-letter team code from {{Lh|CZE}} or {{Lh-rt|SWE}} wikitext, or 'TBD'."""
+    m = re.search(r"\{\{Lh(?:-rt)?\|([A-Za-z]{2,3})\b", text, re.IGNORECASE)
+    if m:
+        code = m.group(1).upper()
+        if code in TEAM_FLAGS:
+            return code
+    m = re.search(r"\b([A-Z]{3})\b", text)
+    if m and m.group(1) in TEAM_FLAGS:
+        return m.group(1)
+    return "TBD"
+
+
+def _parse_hokejbox2_block(block: str, cfg: TournamentConfig, phase_key: str, group_label: Optional[str]) -> Optional[Game]:
+    """Parse a single {{Hokejbox2 ...}} wikitext block into a Game, or None if invalid."""
+    params: dict = {}
+    for line in block.splitlines():
+        m = re.match(r"\s*\|\s*([^=|{}\n]+?)\s*=\s*(.*)", line)
+        if m:
+            params[m.group(1).strip()] = m.group(2).strip()
+
+    datum = params.get("datum", "")
+    cas = params.get("čas", params.get("cas", ""))
+    muz1_raw = params.get("mužstvo1", params.get("muzstvo1", ""))
+    muz2_raw = params.get("mužstvo2", params.get("muzstvo2", ""))
+    skore_raw = params.get("skóre", params.get("skore", ""))
+
+    if not datum or not cas:
+        return None
+
+    try:
+        date_dt = dateparser.parse(normalize_date_text(datum), dayfirst=True, fuzzy=True)
+    except (ValueError, TypeError):
+        return None
+    if not date_dt:
+        return None
+
+    m = re.search(r"(\d{1,2}):(\d{2})", cas)
+    if not m:
+        return None
+    hour, minute = int(m.group(1)), int(m.group(2))
+    start = TZ.localize(datetime(date_dt.year, date_dt.month, date_dt.day, hour, minute))
+
+    team1 = _extract_team_from_lh(muz1_raw)
+    team2 = _extract_team_from_lh(muz2_raw)
+
+    score1 = score2 = None
+    status_suffix = None
+    if skore_raw:
+        # Strip wiki links: [[Prodloužení|PP]] → PP, [[link]] → link
+        clean = re.sub(r"\[\[(?:[^|\]]+\|)?([^\]]+)\]\]", r"\1", skore_raw)
+        clean = re.sub(r"'{2,}", "", clean).strip()
+        sm = re.match(r"^(\d+)\s*[:\-–]\s*(\d+)\s*(.*)?$", clean)
+        if sm:
+            score1 = int(sm.group(1))
+            score2 = int(sm.group(2))
+            suffix = (sm.group(3) or "").strip().lower()
+            if "pp" in suffix or "ot" in suffix or "prodloužení" in suffix:
+                status_suffix = "OT"
+            elif "so" in suffix or "sn" in suffix or "nájezdy" in suffix:
+                status_suffix = "SO"
+            else:
+                status_suffix = "FT"
+
+    venue = params.get("stadión", params.get("stadion"))
+
+    return Game(
+        tournament_key=cfg.key,
+        tournament_title=cfg.title,
+        category=cfg.category,
+        start=start,
+        team1=team1,
+        team2=team2,
+        phase_key=phase_key,
+        phase_label=PHASE_CZ.get(phase_key, "Skupina"),
+        group_label=group_label,
+        venue=venue,
+        score1=score1,
+        score2=score2,
+        status_suffix=status_suffix,
+    )
+
+
+def parse_hokejbox2_from_wikitext(cfg: TournamentConfig) -> List[Game]:
+    """Parse Czech Wikipedia MS page by reading Hokejbox2 templates directly from wikitext.
+
+    This avoids all HTML-rendering ambiguities — the wikitext has score as a named
+    parameter (| skóre =4 : 1) so there is no risk of it being lost in extraction.
+    """
+    if not cfg.wikipedia_url:
+        return []
+    match_url = re.search(r"/wiki/([^#?]+)", cfg.wikipedia_url)
+    if not match_url:
+        return []
+    title = match_url.group(1)
+    parsed = urlparse(cfg.wikipedia_url)
+    api_host = parsed.netloc or "cs.wikipedia.org"
+    api_url = f"https://{api_host}/w/api.php?action=parse&prop=wikitext&format=json&page={title}"
+
+    try:
+        data = fetch_json(api_url)
+    except Exception as exc:
+        log(f"Wikitext fetch failed for {cfg.key}: {exc}")
+        return []
+
+    wikitext = data.get("parse", {}).get("wikitext", {}).get("*", "")
+    if not wikitext:
+        return []
+
+    PLAYOFF_PHASE_MAP = {
+        "Čtvrtfinále": "quarterfinals",
+        "Semifinále": "semifinals",
+        "Zápas o 3. místo": "bronze",
+        "O 3. místo": "bronze",
+        "O bronz": "bronze",
+        "Finále": "gold",
+    }
+
+    games: List[Game] = []
+    current_phase = "preliminary"
+    current_group: Optional[str] = None
+    in_scope = False  # inside Group B or Playoff
+
+    lines = wikitext.splitlines()
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+
+        heading = re.match(r"^(={2,4})\s*(.*?)\s*\1\s*$", line)
+        if heading:
+            text = heading.group(2)
+            if "Skupina B" in text:
+                in_scope = True
+                current_phase = "preliminary"
+                current_group = "Skupina B"
+            elif text.strip() == "Play-off":
+                in_scope = True
+                current_phase = "quarterfinals"
+                current_group = None
+            elif in_scope:
+                matched_phase = next((v for k, v in PLAYOFF_PHASE_MAP.items() if k in text), None)
+                if matched_phase:
+                    current_phase = matched_phase
+                    current_group = None
+                elif heading.group(1) == "==" and "Skupina B" not in text:
+                    # Top-level (==) section change exits scope; sub-sections (===, ====) don't
+                    in_scope = False
+            i += 1
+            continue
+
+        if not in_scope:
+            i += 1
+            continue
+
+        if "{{Hokejbox2" not in line:
+            i += 1
+            continue
+
+        # Collect the full template block (balanced braces)
+        block_lines = [line]
+        depth = line.count("{{") - line.count("}}")
+        i += 1
+        while depth > 0 and i < len(lines):
+            block_lines.append(lines[i])
+            depth += lines[i].count("{{") - lines[i].count("}}")
+            i += 1
+
+        block = "\n".join(block_lines)
+        game = _parse_hokejbox2_block(block, cfg, current_phase, current_group)
+        if game:
+            games.append(game)
+
+    log(f"parse_hokejbox2_from_wikitext found {len(games)} games for {cfg.key}")
+    return games
 
 
 def parse_czech_wikipedia_mens_schedule(html: str, cfg: TournamentConfig) -> List[Game]:
