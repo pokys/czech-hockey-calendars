@@ -1,57 +1,55 @@
 # Czech Hockey Calendars
 
-Veřejný ICS kalendář pro českou mužskou reprezentaci na MS v hokeji.
+Veřejné ICS kalendáře pro MS v ledním hokeji 2026.
 
-Hlavní odběr:
-- `https://raw.githubusercontent.com/pokys/czech-hockey-calendars/main/dist/czech-hockey-men.ics`
+## Kalendáře
 
-Co v něm je:
-- zápasy Česka
-- po odehrání i skóre a typ konce zápasu, pokud jsou na Wikipedii
+### Česko
+Pouze zápasy české reprezentace + finále.
 
-Zdroj dat:
-- primárně Wikipedia
-- automatická aktualizace přes GitHub Actions
+```
+https://raw.githubusercontent.com/pokys/czech-hockey-calendars/main/dist/czech-hockey-men.ics
+```
 
-## Stabilní odkazy
-- `dist/czech-hockey-men.ics`
-- `dist/czech-hockey-all.ics`
+### Všechny zápasy
+Kompletní program — všechny skupinové zápasy i celý play-off.
 
-## Odkazy (RAW)
-- `https://raw.githubusercontent.com/pokys/czech-hockey-calendars/main/dist/czech-hockey-men.ics`
-- `https://raw.githubusercontent.com/pokys/czech-hockey-calendars/main/dist/czech-hockey-all.ics`
+```
+https://raw.githubusercontent.com/pokys/czech-hockey-calendars/main/dist/czech-hockey-all.ics
+```
 
-## Archivní výstupy
-- `dist/archive/2026/iihf-wm-cze-men.ics`
-- `dist/archive/2026/iihf-wm-cze-men-plus-playoff.ics`
-- `dist/archive/2026/iihf-cze-all.ics`
+## Co obsahuje každá událost
 
-## Co se generuje
-- skupinové zápasy české reprezentace
-- všechny play-off zápasy bez ohledu na účast Česka u kombinovaných kalendářů
-- pokud jsou dvojice v play-off známé ve zdroji, zobrazí se konkrétní týmy
-- po odehrání zápasu se doplní skóre a typ konce (FT/OT/SO), pokud je zdroj obsahuje
+**Název:** týmy, skóre a typ konce (FT / OT / SO) po odehrání zápasu
 
-## Feedy
-- `men`: zápasy českých mužů
-- `all`: stejné veřejné jádro plus případné play-off
+**Detail:**
+- fáze (Skupina / Čtvrtfinále / …)
+- skupina (Skupina A / Skupina B)
+- stadion
+- třetinové výsledky po odehrání
+- odkaz na Wikipedia
 
-## Zdroje dat
-- Wikipedia je hlavní zdroj
+## Zdroj dat
+
+Wikipedia (cs.wikipedia.org) — automatická aktualizace přes GitHub Actions každou hodinu.
+
+## Archivní soubory
+
+- `dist/archive/2026/iihf-wm-cze-men.ics` — stejné jako `czech-hockey-men.ics`
+- `dist/archive/2026/iihf-wm-all.ics` — stejné jako `czech-hockey-all.ics`
 
 ## Architektura
-- `config/tournaments.py`: konfigurace turnajů a výstupních kalendářů
-- `sources/wikipedia.py`: hlavní parser Wikipedie
-- `calendar_builder.py`: společné generování ICS
-- `generate.py`: hlavní entrypoint
+
+- `config/tournaments.py` — konfigurace turnajů a výstupních kalendářů
+- `sources/wikipedia.py` — parser Wikipedie (Hokejbox2 wikitext + HTML fallback)
+- `calendar_builder.py` — generování ICS
+- `generate.py` — entrypoint
 
 ## Spuštění lokálně
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 python generate.py
 ```
-
-## GitHub Actions
-Workflow běží každé 2 hodiny a je možné jej spustit ručně přes `workflow_dispatch`. Po vygenerování automaticky commitne změny v `dist/*.ics`.
