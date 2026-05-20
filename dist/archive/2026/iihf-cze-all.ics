@@ -8,123 +8,120 @@ SUMMARY:👨 🇨🇿 Česko - 🇩🇰 Dánsko 4:1 (FT)
 DTSTART;TZID=Europe/Prague:20260515T202000
 DTEND;TZID=Europe/Prague:20260515T232000
 UID:13a0185e6f7ae6823f98e22299dff95cedbbf32f@iihf-calendar
-DESCRIPTION:Skupina\nSkupina B\n[[BCF Arena]]\, [[Fribourg]]\n(2:0\, 0:0\,
-  2:1)\nhttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_
- 2026
+DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(2:0\, 0:0\, 2:1)\nh
+ ttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 🇸🇮 Slovinsko - 🇨🇿 Česko 3:2 (OT)
 DTSTART;TZID=Europe/Prague:20260516T202000
 DTEND;TZID=Europe/Prague:20260516T232000
 UID:5d9a2ee3b02e03a548b1f208b9c79a00bfc2c294@iihf-calendar
-DESCRIPTION:Skupina\nSkupina B\n[[BCF Arena]]\, [[Fribourg]]\n(1:0\, 0:2\,
-  1:0 – 1:0)\nhttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním
- _hokeji_2026
+DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(1:0\, 0:2\, 1:0 –
+  1:0)\nhttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_
+ 2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 🇸🇪 Švédsko - 🇨🇿 Česko 3:4 (FT)
 DTSTART;TZID=Europe/Prague:20260518T202000
 DTEND;TZID=Europe/Prague:20260518T232000
 UID:d163eecb4560a0de5297f9e757f94ca207e89dcc@iihf-calendar
-DESCRIPTION:Skupina\nSkupina B\n[[BCF Arena]]\, [[Fribourg]]\n(2:3\, 1:1\,
-  0:0)\nhttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_
- 2026
+DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(2:3\, 1:1\, 0:0)\nh
+ ttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 🇨🇿 Česko - 🇮🇹 Itálie 3:1 (FT)
 DTSTART;TZID=Europe/Prague:20260520T162000
 DTEND;TZID=Europe/Prague:20260520T192000
 UID:0823eda8e75322f783170c8b1cf58303a4b6c4f5@iihf-calendar
-DESCRIPTION:Skupina\nSkupina B\n[[BCF Arena]]\, [[Fribourg]]\n(0:0\, 0:1\,
-  3:0)\nhttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_
- 2026
+DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(0:0\, 0:1\, 3:0)\nh
+ ttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 🇸🇰 Slovensko - 🇨🇿 Česko
 DTSTART;TZID=Europe/Prague:20260523T162000
 DTEND;TZID=Europe/Prague:20260523T192000
 UID:f117e44d081b0a605af3396dae349a7c40b56e76@iihf-calendar
-DESCRIPTION:Skupina\nSkupina B\n[[BCF Arena]]\, [[Fribourg]]\n(:\, :\, :)\
- nhttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(:\, :\, :)\nhttps:/
+ /cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 🇨🇿 Česko - 🇳🇴 Norsko
 DTSTART;TZID=Europe/Prague:20260525T162000
 DTEND;TZID=Europe/Prague:20260525T192000
 UID:d927d0670e4138db331c5a70df6f8cfc6a0f4fdf@iihf-calendar
-DESCRIPTION:Skupina\nSkupina B\n[[BCF Arena]]\, [[Fribourg]]\n(:\, :\, :)\
- nhttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(:\, :\, :)\nhttps:/
+ /cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 🇨🇿 Česko - 🇨🇦 Kanada
 DTSTART;TZID=Europe/Prague:20260526T202000
 DTEND;TZID=Europe/Prague:20260526T232000
 UID:af8f52b0ed80101345a50c3361145bfcf096927d@iihf-calendar
-DESCRIPTION:Skupina\nSkupina B\n[[BCF Arena]]\, [[Fribourg]]\n(:\, :\, :)\
- nhttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(:\, :\, :)\nhttps:/
+ /cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 Čtvrtfinále 1
 DTSTART;TZID=Europe/Prague:20260528T161500
 DTEND;TZID=Europe/Prague:20260528T191500
 UID:426c8a953e8bef945392dcba78180b8554a706bd@iihf-calendar
-DESCRIPTION:Čtvrtfinále\n[[Swiss Life Arena]]\, [[Curych]]\n(:\, :\, :)\
- nhttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Čtvrtfinále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps:/
+ /cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 Čtvrtfinále 2
 DTSTART;TZID=Europe/Prague:20260528T161500
 DTEND;TZID=Europe/Prague:20260528T191500
 UID:426c8a953e8bef945392dcba78180b8554a706bd@iihf-calendar
-DESCRIPTION:Čtvrtfinále\n[[BCF Arena]]\, [[Fribourg]]\n(:\, :\, :)\nhttp
- s://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Čtvrtfinále\nBCF Arena\, Fribourg\n(:\, :\, :)\nhttps://cs.w
+ ikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 Čtvrtfinále 3
 DTSTART;TZID=Europe/Prague:20260528T201500
 DTEND;TZID=Europe/Prague:20260528T231500
 UID:883eb471536ea2a3d1b996708798eaf3b07848c9@iihf-calendar
-DESCRIPTION:Čtvrtfinále\n[[Swiss Life Arena]]\, [[Curych]]\n(:\, :\, :)\
- nhttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Čtvrtfinále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps:/
+ /cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 Čtvrtfinále 4
 DTSTART;TZID=Europe/Prague:20260528T201500
 DTEND;TZID=Europe/Prague:20260528T231500
 UID:883eb471536ea2a3d1b996708798eaf3b07848c9@iihf-calendar
-DESCRIPTION:Čtvrtfinále\n[[BCF Arena]]\, [[Fribourg]]\n(:\, :\, :)\nhttp
- s://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Čtvrtfinále\nBCF Arena\, Fribourg\n(:\, :\, :)\nhttps://cs.w
+ ikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 Semifinále 1
 DTSTART;TZID=Europe/Prague:20260530T143000
 DTEND;TZID=Europe/Prague:20260530T173000
 UID:75156580b365162af3fa2966b12c47c0547750d0@iihf-calendar
-DESCRIPTION:Semifinále\n[[Swiss Life Arena]]\, [[Curych]]\n(:\, :\, :)\nh
- ttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Semifinále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps://c
+ s.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 Semifinále 2
 DTSTART;TZID=Europe/Prague:20260530T183000
 DTEND;TZID=Europe/Prague:20260530T213000
 UID:c84d1530fd82f4ee55781e0f6fc8d04294d7ef57@iihf-calendar
-DESCRIPTION:Semifinále\n[[Swiss Life Arena]]\, [[Curych]]\n(:\, :\, :)\nh
- ttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Semifinále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps://c
+ s.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 Semifinále 3
 DTSTART;TZID=Europe/Prague:20260531T153000
 DTEND;TZID=Europe/Prague:20260531T183000
 UID:c7c03b37315ed2f28c7d6f5cee645a2d1174bd98@iihf-calendar
-DESCRIPTION:Semifinále\n[[Swiss Life Arena]]\, [[Curych]]\n(:\, :\, :)\nh
- ttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Semifinále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps://c
+ s.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 🥇 Finále 1
 DTSTART;TZID=Europe/Prague:20260531T201500
 DTEND;TZID=Europe/Prague:20260531T231500
 UID:aafbdb6747244466839840da9dbc6f29ae43a384@iihf-calendar
-DESCRIPTION:Finále\n[[Swiss Life Arena]]\, [[Curych]]\n(:\, :\, :)\nhttps
- ://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Finále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps://cs.wi
+ kipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 END:VCALENDAR
