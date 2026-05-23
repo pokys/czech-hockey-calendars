@@ -37,12 +37,12 @@ DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(0:0\, 0:1\, 3:0)\nh
  ttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:👨 🇸🇰 Slovensko - 🇨🇿 Česko
+SUMMARY:👨 🇸🇰 Slovensko - 🇨🇿 Česko 2:3 (FT)
 DTSTART;TZID=Europe/Prague:20260523T162000
 DTEND;TZID=Europe/Prague:20260523T192000
 UID:f117e44d081b0a605af3396dae349a7c40b56e76@iihf-calendar
-DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(:\, :\, :)\nhttps:/
- /cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(0:1\, 2:1\, 0:1)\nh
+ ttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 🇨🇿 Česko - 🇳🇴 Norsko
