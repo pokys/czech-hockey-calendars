@@ -390,12 +390,12 @@ DESCRIPTION:Skupina\nSkupina A\nSwiss Life Arena\, Curych\n(:\, :\, :)\nht
  tps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:👨 🇸🇰 Slovensko - 🇨🇦 Kanada
+SUMMARY:👨 🇸🇰 Slovensko - 🇨🇦 Kanada 1:5 (FT)
 DTSTART;TZID=Europe/Prague:20260524T202000
 DTEND;TZID=Europe/Prague:20260524T232000
 UID:2b4e470f95611b6672bf58f2209fd0aba00ef121@iihf-calendar
-DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(:\, :\, :)\nhttps:/
- /cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(0:1\, 1:0\, 0:4)\nh
+ ttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 🇺🇸 USA - 🇭🇺 Maďarsko
