@@ -451,66 +451,67 @@ DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(1:0\, 2:2\, 0:1 –
  2026
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:👨 🇺🇸 USA - 🇦🇹 Rakousko
+SUMMARY:👨 🇺🇸 USA - 🇦🇹 Rakousko 4:1 (FT)
 DTSTART;TZID=Europe/Prague:20260526T162000
 DTEND;TZID=Europe/Prague:20260526T192000
 UID:20a865a4c294c4d6bee16d85e2e0f34901610ca7@iihf-calendar
-DESCRIPTION:Skupina\nSkupina A\nSwiss Life Arena\, Curych\n(:\, :\, :)\nht
- tps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Skupina\nSkupina A\nSwiss Life Arena\, Curych\n(2:0\, 2:1\, 0:
+ 0)\nhttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_202
+ 6
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:👨 🇸🇪 Švédsko - 🇸🇰 Slovensko
+SUMMARY:👨 🇸🇪 Švédsko - 🇸🇰 Slovensko 4:2 (FT)
 DTSTART;TZID=Europe/Prague:20260526T162000
 DTEND;TZID=Europe/Prague:20260526T192000
 UID:ac31da415f765946f38a158b7f195a82d5398d24@iihf-calendar
-DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(:\, :\, :)\nhttps:/
- /cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(1:1\, 2:1\, 1:0)\nh
+ ttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 🇨🇭 Švýcarsko - 🇫🇮 Finsko
 DTSTART;TZID=Europe/Prague:20260526T202000
 DTEND;TZID=Europe/Prague:20260526T232000
 UID:a7850a968b4ef5f27c7701527985d096154c974f@iihf-calendar
-DESCRIPTION:Skupina\nSkupina A\nSwiss Life Arena\, Curych\n(:\, :\, :)\nht
- tps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Skupina\nSkupina A\nSwiss Life Arena\, Curych\n(2:0\, :\, :)\n
+ https://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 🇨🇿 Česko - 🇨🇦 Kanada
 DTSTART;TZID=Europe/Prague:20260526T202000
 DTEND;TZID=Europe/Prague:20260526T232000
 UID:af8f52b0ed80101345a50c3361145bfcf096927d@iihf-calendar
-DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(:\, :\, :)\nhttps:/
- /cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(1:0\, 1:1\, :)\nhtt
+ ps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 Čtvrtfinále 1
-DTSTART;TZID=Europe/Prague:20260528T161500
-DTEND;TZID=Europe/Prague:20260528T191500
-UID:426c8a953e8bef945392dcba78180b8554a706bd@iihf-calendar
+DTSTART;TZID=Europe/Prague:20260528T162000
+DTEND;TZID=Europe/Prague:20260528T192000
+UID:bf85649e579f682bd4be5a8118430e23f9eec709@iihf-calendar
 DESCRIPTION:Čtvrtfinále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps:/
  /cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 Čtvrtfinále 2
-DTSTART;TZID=Europe/Prague:20260528T161500
-DTEND;TZID=Europe/Prague:20260528T191500
-UID:426c8a953e8bef945392dcba78180b8554a706bd@iihf-calendar
+DTSTART;TZID=Europe/Prague:20260528T162000
+DTEND;TZID=Europe/Prague:20260528T192000
+UID:bf85649e579f682bd4be5a8118430e23f9eec709@iihf-calendar
 DESCRIPTION:Čtvrtfinále\nBCF Arena\, Fribourg\n(:\, :\, :)\nhttps://cs.w
  ikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 Čtvrtfinále 3
-DTSTART;TZID=Europe/Prague:20260528T201500
-DTEND;TZID=Europe/Prague:20260528T231500
-UID:883eb471536ea2a3d1b996708798eaf3b07848c9@iihf-calendar
+DTSTART;TZID=Europe/Prague:20260528T202000
+DTEND;TZID=Europe/Prague:20260528T232000
+UID:b93b49d22c0be4fad60a927a4b044cc6c7266b87@iihf-calendar
 DESCRIPTION:Čtvrtfinále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps:/
  /cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 Čtvrtfinále 4
-DTSTART;TZID=Europe/Prague:20260528T201500
-DTEND;TZID=Europe/Prague:20260528T231500
-UID:883eb471536ea2a3d1b996708798eaf3b07848c9@iihf-calendar
+DTSTART;TZID=Europe/Prague:20260528T202000
+DTEND;TZID=Europe/Prague:20260528T232000
+UID:b93b49d22c0be4fad60a927a4b044cc6c7266b87@iihf-calendar
 DESCRIPTION:Čtvrtfinále\nBCF Arena\, Fribourg\n(:\, :\, :)\nhttps://cs.w
  ikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
