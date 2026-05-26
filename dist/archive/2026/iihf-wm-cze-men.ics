@@ -53,12 +53,20 @@ DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(1:2\, 0:0\, 0:2)\nh
  ttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:👨 🇨🇿 Česko - 🇨🇦 Kanada
+SUMMARY:👨 🇨🇿 Česko - 🇨🇦 Kanada 2:3 (FT)
 DTSTART;TZID=Europe/Prague:20260526T202000
 DTEND;TZID=Europe/Prague:20260526T232000
 UID:af8f52b0ed80101345a50c3361145bfcf096927d@iihf-calendar
-DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(1:0\, 1:1\, :)\nhtt
- ps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Skupina\nSkupina B\nBCF Arena\, Fribourg\n(1:0\, 1:1\, 0:2)\nh
+ ttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:👨 🇫🇮 Finsko - 🇨🇿 Česko
+DTSTART;TZID=Europe/Prague:20260528T162000
+DTEND;TZID=Europe/Prague:20260528T192000
+UID:074ec1fa7ce13214efb5a6ce5ed17b8af12b0715@iihf-calendar
+DESCRIPTION:Čtvrtfinále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps:/
+ /cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 🥇 Finále 1
