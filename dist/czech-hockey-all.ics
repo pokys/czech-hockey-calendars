@@ -518,17 +518,17 @@ DESCRIPTION:Čtvrtfinále\nBCF Arena\, Fribourg\n(:\, :\, :)\nhttps://cs.w
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 Semifinále 1
-DTSTART;TZID=Europe/Prague:20260530T143000
-DTEND;TZID=Europe/Prague:20260530T173000
-UID:75156580b365162af3fa2966b12c47c0547750d0@iihf-calendar
+DTSTART;TZID=Europe/Prague:20260530T152000
+DTEND;TZID=Europe/Prague:20260530T182000
+UID:cf44fdeaf7a447902349d4a6d4b99cb8c26cd370@iihf-calendar
 DESCRIPTION:Semifinále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps://c
  s.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 Semifinále 2
-DTSTART;TZID=Europe/Prague:20260530T183000
-DTEND;TZID=Europe/Prague:20260530T213000
-UID:c84d1530fd82f4ee55781e0f6fc8d04294d7ef57@iihf-calendar
+DTSTART;TZID=Europe/Prague:20260530T200000
+DTEND;TZID=Europe/Prague:20260530T230000
+UID:b5cce948ac0cc6c8cc8993f5830344afdb402d12@iihf-calendar
 DESCRIPTION:Semifinále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps://c
  s.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
@@ -542,9 +542,9 @@ DESCRIPTION:Semifinále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps://c
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 🥇 Finále 1
-DTSTART;TZID=Europe/Prague:20260531T201500
-DTEND;TZID=Europe/Prague:20260531T231500
-UID:aafbdb6747244466839840da9dbc6f29ae43a384@iihf-calendar
+DTSTART;TZID=Europe/Prague:20260531T202000
+DTEND;TZID=Europe/Prague:20260531T232000
+UID:720cb339e3ea2022dd4553ae5f3b07be44b35ee6@iihf-calendar
 DESCRIPTION:Finále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps://cs.wi
  kipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT

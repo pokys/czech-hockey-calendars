@@ -70,9 +70,9 @@ DESCRIPTION:Čtvrtfinále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps:/
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 🥇 Finále 1
-DTSTART;TZID=Europe/Prague:20260531T201500
-DTEND;TZID=Europe/Prague:20260531T231500
-UID:aafbdb6747244466839840da9dbc6f29ae43a384@iihf-calendar
+DTSTART;TZID=Europe/Prague:20260531T202000
+DTEND;TZID=Europe/Prague:20260531T232000
+UID:720cb339e3ea2022dd4553ae5f3b07be44b35ee6@iihf-calendar
 DESCRIPTION:Finále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps://cs.wi
  kipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
