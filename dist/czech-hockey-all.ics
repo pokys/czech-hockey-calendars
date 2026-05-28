@@ -501,34 +501,34 @@ DESCRIPTION:Čtvrtfinále\nBCF Arena\, Fribourg\n(1:0\, 1:0\, 2:0)\nhttps:
  //cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:👨 🇨🇭 Švýcarsko - 🇸🇪 Švédsko
+SUMMARY:👨 🇨🇭 Švýcarsko - 🇸🇪 Švédsko 3:1 (FT)
 DTSTART;TZID=Europe/Prague:20260528T202000
 DTEND;TZID=Europe/Prague:20260528T232000
 UID:f6ab7a62c90b6edd36284bfab18df533a42f3c6c@iihf-calendar
-DESCRIPTION:Čtvrtfinále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps:/
- /cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Čtvrtfinále\nSwiss Life Arena\, Curych\n(1:1\, 2:0\, 0:0)\nh
+ ttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:👨 🇳🇴 Norsko - 🇱🇻 Lotyšsko
+SUMMARY:👨 🇳🇴 Norsko - 🇱🇻 Lotyšsko 2:0 (FT)
 DTSTART;TZID=Europe/Prague:20260528T202000
 DTEND;TZID=Europe/Prague:20260528T232000
 UID:ce5e4ef8aadf31ae22af1b0befb697a6ae876522@iihf-calendar
-DESCRIPTION:Čtvrtfinále\nBCF Arena\, Fribourg\n(:\, :\, :)\nhttps://cs.w
- ikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Čtvrtfinále\nBCF Arena\, Fribourg\n(0:0\, 1:0\, 1:0)\nhttps:
+ //cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:👨 Semifinále 1
+SUMMARY:👨 🇨🇭 Švýcarsko - 🇳🇴 Norsko
 DTSTART;TZID=Europe/Prague:20260530T152000
 DTEND;TZID=Europe/Prague:20260530T182000
-UID:cf44fdeaf7a447902349d4a6d4b99cb8c26cd370@iihf-calendar
+UID:b3660df2381bd766f4c3b1f8c7a39cebbb600b04@iihf-calendar
 DESCRIPTION:Semifinále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps://c
  s.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:👨 Semifinále 2
+SUMMARY:👨 🇨🇦 Kanada - 🇫🇮 Finsko
 DTSTART;TZID=Europe/Prague:20260530T200000
 DTEND;TZID=Europe/Prague:20260530T230000
-UID:b5cce948ac0cc6c8cc8993f5830344afdb402d12@iihf-calendar
+UID:b5b8c73e508fd977e47f5354233e05c312d22756@iihf-calendar
 DESCRIPTION:Semifinále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps://c
  s.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
