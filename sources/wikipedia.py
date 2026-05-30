@@ -275,16 +275,27 @@ def parse_hokejbox2_from_wikitext(cfg: TournamentConfig) -> List[Game]:
     if not wikitext:
         return []
 
-    PLAYOFF_PHASE_MAP = {
-        "čtvrtfinále": "quarterfinals",
-        "semifinále": "semifinals",
-        "zápas o 3. místo": "bronze",
-        "o 3. místo": "bronze",
-        "o třetí místo": "bronze",
-        "o bronz": "bronze",
-        "bronzová": "bronze",
-        "finále": "gold",
-    }
+    def _norm_heading(text: str) -> str:
+        """Normalise a wikitext heading: strip nbsp, templates, wikilinks, bold/italic
+        and collapse whitespace, so substring matching is not defeated by &nbsp; etc."""
+        t = text.replace("\xa0", " ").replace("&nbsp;", " ")
+        t = re.sub(r"\{\{\s*nbsp\s*\}\}", " ", t, flags=re.IGNORECASE)
+        t = re.sub(r"\[\[(?:[^|\]]+\|)?([^\]]+)\]\]", r"\1", t)
+        t = re.sub(r"\{\{[^}]+\}\}", " ", t)
+        t = re.sub(r"'{2,}", "", t)
+        return re.sub(r"\s+", " ", t).strip().lower()
+
+    def _classify_playoff(text_norm: str) -> Optional[str]:
+        # Order matters: 'semifinále'/'čtvrtfinále' contain 'finále', so test them first.
+        if "čtvrtfinále" in text_norm or "ctvrtfinale" in text_norm:
+            return "quarterfinals"
+        if "semifinále" in text_norm or "semifinale" in text_norm:
+            return "semifinals"
+        if "bronz" in text_norm or "3. míst" in text_norm or "3.míst" in text_norm or "třetí míst" in text_norm:
+            return "bronze"
+        if "finále" in text_norm or "finale" in text_norm:
+            return "gold"
+        return None
 
     games: List[Game] = []
     current_phase = "preliminary"
@@ -299,17 +310,17 @@ def parse_hokejbox2_from_wikitext(cfg: TournamentConfig) -> List[Game]:
         heading = re.match(r"^(={2,4})\s*(.*?)\s*\1\s*$", line)
         if heading:
             text = heading.group(2)
-            text_lower = text.lower()
-            if "Skupina A" in text or "Skupina B" in text:
+            text_norm = _norm_heading(text)
+            if "skupina a" in text_norm or "skupina b" in text_norm:
                 in_scope = True
                 current_phase = "preliminary"
-                current_group = "Skupina A" if "Skupina A" in text else "Skupina B"
-            elif text.strip().lower() == "play-off":
+                current_group = "Skupina A" if "skupina a" in text_norm else "Skupina B"
+            elif text_norm == "play-off" or text_norm == "playoff":
                 in_scope = True
                 current_phase = "quarterfinals"
                 current_group = None
             elif in_scope:
-                matched_phase = next((v for k, v in PLAYOFF_PHASE_MAP.items() if k in text_lower), None)
+                matched_phase = _classify_playoff(text_norm)
                 if matched_phase:
                     current_phase = matched_phase
                     current_group = None
