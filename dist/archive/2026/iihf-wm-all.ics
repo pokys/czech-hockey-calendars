@@ -517,12 +517,12 @@ DESCRIPTION:Čtvrtfinále\nBCF Arena\, Fribourg\n(0:0\, 1:0\, 1:0)\nhttps:
  //cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:👨 🇨🇭 Švýcarsko - 🇳🇴 Norsko
+SUMMARY:👨 🇨🇭 Švýcarsko - 🇳🇴 Norsko 6:0 (FT)
 DTSTART;TZID=Europe/Prague:20260530T152000
 DTEND;TZID=Europe/Prague:20260530T182000
 UID:b3660df2381bd766f4c3b1f8c7a39cebbb600b04@iihf-calendar
-DESCRIPTION:Semifinále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps://c
- s.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Semifinále\nSwiss Life Arena\, Curych\n1:0\, 3:0\, 2:0\nhttps
+ ://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:👨 🇨🇦 Kanada - 🇫🇮 Finsko
