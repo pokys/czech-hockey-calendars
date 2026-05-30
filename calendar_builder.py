@@ -34,8 +34,9 @@ def game_matches_spec(game: Game, spec: CalendarSpec) -> bool:
         return True
     is_czech_game = TEAM_CZ in (game.team1, game.team2)
     is_playoff = game.phase_key in PLAYOFF_PHASES
+    is_semifinal = game.phase_key == "semifinals"
     is_final = game.phase_key == "gold"
-    return (spec.include_team_cze and is_czech_game) or (spec.include_playoff and is_playoff) or (spec.include_final and is_final)
+    return (spec.include_team_cze and is_czech_game) or (spec.include_playoff and is_playoff) or (spec.include_semifinal and is_semifinal) or (spec.include_final and is_final)
 
 
 def select_games(games: Iterable[Game], spec: CalendarSpec) -> List[Game]:
