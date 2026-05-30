@@ -69,18 +69,18 @@ DESCRIPTION:Čtvrtfinále\nSwiss Life Arena\, Curych\n(2:0\, 1:1\, 1:0)\nh
  ttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:👨 🥉 O bronz 1
+SUMMARY:👨 🥉 🇨🇦 Kanada - 🇳🇴 Norsko
 DTSTART;TZID=Europe/Prague:20260531T153000
 DTEND;TZID=Europe/Prague:20260531T183000
-UID:c7c03b37315ed2f28c7d6f5cee645a2d1174bd98@iihf-calendar
+UID:aa506c673c7904813a2ca48321228632ad814567@iihf-calendar
 DESCRIPTION:O bronz\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps://cs.wi
  kipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:👨 🥇 Finále 1
+SUMMARY:👨 🥇 🇨🇭 Švýcarsko - 🇫🇮 Finsko
 DTSTART;TZID=Europe/Prague:20260531T202000
 DTEND;TZID=Europe/Prague:20260531T232000
-UID:720cb339e3ea2022dd4553ae5f3b07be44b35ee6@iihf-calendar
+UID:b2a6d06ac776e15bcf6957f97768207ec4d38d31@iihf-calendar
 DESCRIPTION:Finále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps://cs.wi
  kipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
