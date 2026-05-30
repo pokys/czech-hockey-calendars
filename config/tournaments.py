@@ -15,7 +15,6 @@ TOURNAMENTS = [
                 alias_files=["czech-hockey-men.ics"],
                 include_team_cze=True,
                 include_playoff=False,
-                include_semifinal=True,
                 include_final=True,
             ),
             CalendarSpec(
