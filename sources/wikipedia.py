@@ -276,12 +276,14 @@ def parse_hokejbox2_from_wikitext(cfg: TournamentConfig) -> List[Game]:
         return []
 
     PLAYOFF_PHASE_MAP = {
-        "Čtvrtfinále": "quarterfinals",
-        "Semifinále": "semifinals",
-        "Zápas o 3. místo": "bronze",
-        "O 3. místo": "bronze",
-        "O bronz": "bronze",
-        "Finále": "gold",
+        "čtvrtfinále": "quarterfinals",
+        "semifinále": "semifinals",
+        "zápas o 3. místo": "bronze",
+        "o 3. místo": "bronze",
+        "o třetí místo": "bronze",
+        "o bronz": "bronze",
+        "bronzová": "bronze",
+        "finále": "gold",
     }
 
     games: List[Game] = []
@@ -297,16 +299,17 @@ def parse_hokejbox2_from_wikitext(cfg: TournamentConfig) -> List[Game]:
         heading = re.match(r"^(={2,4})\s*(.*?)\s*\1\s*$", line)
         if heading:
             text = heading.group(2)
+            text_lower = text.lower()
             if "Skupina A" in text or "Skupina B" in text:
                 in_scope = True
                 current_phase = "preliminary"
                 current_group = "Skupina A" if "Skupina A" in text else "Skupina B"
-            elif text.strip() == "Play-off":
+            elif text.strip().lower() == "play-off":
                 in_scope = True
                 current_phase = "quarterfinals"
                 current_group = None
             elif in_scope:
-                matched_phase = next((v for k, v in PLAYOFF_PHASE_MAP.items() if k in text), None)
+                matched_phase = next((v for k, v in PLAYOFF_PHASE_MAP.items() if k in text_lower), None)
                 if matched_phase:
                     current_phase = matched_phase
                     current_group = None
