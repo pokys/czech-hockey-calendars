@@ -77,11 +77,11 @@ DESCRIPTION:O bronz\nSwiss Life Arena\, Curych\n(0:1\, 0:1\, 2:0 – 0:1)\
  nhttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:👨 🥇 🇨🇭 Švýcarsko - 🇫🇮 Finsko
+SUMMARY:👨 🥇 🇨🇭 Švýcarsko - 🇫🇮 Finsko 0:1 (OT)
 DTSTART;TZID=Europe/Prague:20260531T202000
 DTEND;TZID=Europe/Prague:20260531T232000
 UID:b2a6d06ac776e15bcf6957f97768207ec4d38d31@iihf-calendar
-DESCRIPTION:Finále\nSwiss Life Arena\, Curych\n(:\, :\, :)\nhttps://cs.wi
- kipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
+DESCRIPTION:Finále\nSwiss Life Arena\, Curych\n(0:0\, 0:0\, 0:0 – 0:1)\
+ nhttps://cs.wikipedia.org/wiki/Mistrovství_světa_v_ledním_hokeji_2026
 END:VEVENT
 END:VCALENDAR
